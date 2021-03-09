@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<title> Lottery </title>
+
+<body>
+
+<script language='javascript'>
+
+var numbers = new Array (5);
+var winners = new Array (5);
+var bool = false;
+var counter = 0;
+var counting = 0;
+var prize = 0;
+for (i = 0; i < winners.length; i++)
+{
+	winners[i] = Math.floor((Math.random() * 48));
+}
+
+var winner_lucky = Math.floor((Math.random() * 18));
+
+var output = prompt ("Enter a winning number!", " ");
+numbers = output.split(" ");
+
+lucky_ball = prompt ("Enter lucky ball number!", "");
+
+numbers.sort(function(a, b){return a-b});
+winners.sort(function(a, b){return a-b});
+
+for (i = 0; i < winners.length; i++)
+{
+	for (j = 0; j < numbers.length; j++)
+	{
+		if (numbers[j] == winners[i])
+		{
+			counter++;
+		}
+	}
+}
+
+if (winner_lucky == lucky_ball)
+{
+	bool = true;
+}
+
+if (bool == true && counter == 0)
+{
+	prize = 4;
+}
+
+if (counter == 1 && bool == true)
+{
+	prize = 6;
+}
+
+if (counter == 2 && bool != true)
+{
+	prize = 3;
+}
+
+if (counter == 2 && bool == true)
+{
+	prize = 25;
+}
+
+if (counter == 3 && bool != true)
+{
+	prize = 20;
+}
+
+if (counter == 3 && bool == true)
+{
+	prize = 150;
+}
+
+if (counter == 4 && bool != true)
+{
+	prize = 200;
+}
+
+if (counter == 4 && bool == true)
+{
+	prize = 5000;
+}
+
+if (counter == 5 && bool != true)
+{
+	prize = 25000;
+}
+
+if (counter == 5 && bool == true)
+{
+	prize = 7000;
+}
+
+document.write ("The winner numbers are: ");
+
+for (i = 0; i < winners.length; i++)
+{
+	document.write (winners[i] + " ");
+}
+
+document.write ("</br>");
+
+document.write ("Your selected numbers are: ");
+
+for (i = 0; i < numbers.length; i++)
+{
+	document.write (numbers[i] + " ");
+}
+
+document.write ("</br>");
+
+document.write ("The winner lucky ball number is: " + winner_lucky);
+
+document.write ("</br>");
+
+document.write ("Your lucky ball number is: " + lucky_ball);
+
+document.write ("</br>");
+
+if (counter != 0)
+{
+	document.write ("Number of balls matched: " + counter);
+	document.write ("</br>");
+}
+
+if (bool == true)
+{
+	document.write ("The lucky ball matched!");
+	document.write ("</br>");
+}
+else
+{
+	document.write ("Sorry, the lucky ball did not match!");
+	document.write ("</br>");
+}
+
+if (counter == 5 & bool != true)
+{
+	document.write ("Your payout is: $" + prize + " a YEAR for LIFE");
+	document.write ("</br>");
+}
+
+if (counter == 5 & bool == true)
+{
+	document.write ("Your payout is: $" + prize + " a WEEK for LIFE");
+	document.write ("</br>");
+}
+
+if (counter < 5 && counter > 0)
+{
+	document.write ("Your payout is: $" + prize);
+}
+
+if (counter == 0)
+{
+	document.write ("Your payout is: $0");
+}
+
+</script>
+</body>
+</html>
